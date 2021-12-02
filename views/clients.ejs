@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body>
+  <%- include("./partials/nav.ejs") %>
+    <form action="client" method="POST">
+        <div class="container">
+          <select name="selection">
+            <option>Find client by name</option>
+            <option>Find clients by city</option>
+          </select>
+          <input type="text" name="value" required>
+          <button type="submit">Find</button>
+        </div>
+      </form>
+      <div>
+        <% if (clients !== undefined) {%>
+          <% if (clients.length > 0) {%>
+            <% for (var i = 0; i < clients.length; i++){ %>
+              <% let clientDivided = []%>
+              <% if (clients[i].findclientbycity !== undefined) { %>
+              <% clientDivided = clients[i].findclientbycity.split(',')%>
+              <% } else { clientDivided = clients[i].findclientbyname.split(',')}%>
+              <div class='client_div'>
+              <% if (clientDivided[0].length > 1) {%>
+                <p>Id: <%= clientDivided[0].substr(1) %></p>
+                <p>Name: <%= clientDivided[1] %></p>
+                <p>Email: <%= clientDivided[2] %></p>
+                <p>FAX: <%= clientDivided[3] %></p>
+                <p>ИНН: <%= clientDivided[5] %></p>
+                <p>ОГРН: <%= clientDivided[6] %></p>
+                <p>Адрес почты:<%= clientDivided[7] %></p>
+                <p>Номер телефона: <%= clientDivided[8] %></p>
+                <p>Город: <%= clientDivided[9] %></p>
+                <p>Должность: <%= clientDivided[10].substr(0, clientDivided[10].length-1) %></p>
+              <% } else { %>
+                <p>No such client</p>
+              <% } %>
+            </div>
+            <% } %>
+          <% }%>
+        <% }%>
+      </div>
+</body>
+</html>

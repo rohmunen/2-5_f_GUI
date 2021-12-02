@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+<body>
+  <%- include("./partials/nav.ejs") %>
+    <form action="register" method="POST">
+        <div class="container">
+          <label for="username"><b>Employee name</b></label>
+          <input type="text" placeholder="Enter Username" name="username" required>
+          <label for="position"><b>Employee Position</b></label>
+          <input type="text" placeholder="Enter Employee Position" name="position" required>
+          <label for="password"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" required>
+          <button type="submit">Create employee</button>
+        </div>
+      </form>
+      <%- include("./partials/err.ejs") %>
+</body>
+</html>

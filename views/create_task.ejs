@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+<body>
+  <%- include("./partials/nav.ejs") %>
+    <form action="createtask" method="POST">
+        <div class="container">
+          <label for="taskName"><b>task name</b></label>
+          <input style="margin-bottom: 10px;" type="text" placeholder="Enter task name" name="task_name" required>
+          <label for="taskName"><b>executor</b></label>
+          <input style="margin-bottom: 10px;" type="text" placeholder="Enter task executor name" name="task_executor" required>
+          <label for="taskName"><b>expires</b></label>
+          <input style="margin-bottom: 10px;" type="text" placeholder="yyyy-mm-dd hh:mm:ss" name="task_expires" required>
+          <label for="taskName"><b>priority</b></label>
+          <input style="margin-bottom: 10px;" type="text" placeholder="Task priority" name="task_priority" required>
+          <label for="taskName"><b>client id</b></label>
+          <input style="margin-bottom: 10px;" type="text" placeholder="Enter client id" name="task_client_id" required>
+          <label for="taskName"><b>contract number</b></label>
+          <input style="margin-bottom: 10px;" type="text" placeholder="Enter contract number" name="task_contract_number">
+          <label for="taskName"><b>serial number</b></label>
+          <input style="margin-bottom: 15px;" type="text" placeholder="Enter serial number" name="task_serial_number">
+      
+          <button style="width: 25%;"type="submit">Create</button>
+        </div>
+      </form>
+      <%- include("./partials/err.ejs") %>
+</body>
+</html>

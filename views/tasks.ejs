@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/nav.ejs") %>
+    <p>Task count <%= tasks.length%></p>
+    <% for (var i = 0; i < tasks.length; i++) {%>
+        <% let taskDivided = [] %>
+        <% if (tasks[i].checktasks !== undefined){ taskDivided = tasks[i].checktasks.split(',')} else {taskDivided = tasks[i].managerchecktasks.split(',')}%>
+        <div class='task_div'>
+            <p>Task name: <%=taskDivided[1]%></p>
+            <p>Task author: <%=taskDivided[2]%></p>
+            <p>Task executor: <%=taskDivided[3]%></p>
+            <p>Task date of creation: <%=taskDivided[4]%></p>
+            <p>Task expire date: <%=taskDivided[5]%></p>
+            <p>Task done date: <%=taskDivided[6]%></p>
+            <p>Task contract number: <%=taskDivided[7]%></p>
+            <p>Task serial number: <%=taskDivided[8]%></p>
+            <p>Task priority <%=taskDivided[9]%></p>
+            <p>Task is done <%=taskDivided[10]%></p>
+            <% if (role === 'manager' && taskDivided[2] === username) {%>
+                <a href='/done/:<%= taskDivided[0].substr(1) %>' class="done">
+                    done
+                </a>
+            <%} else if (role === 'executor' && taskDivided[3] === username){%>
+                <a href='/done/:<%= taskDivided[0].substr(1) %>' class="done">
+                    done
+                </a>
+            <%} else if (role === 'admin') {%>
+                <a href='/done/:<%= taskDivided[0].substr(1) %>' class="done">
+                    done
+                </a>
+                <a style="margin-left: 10px;" href='/notdone/:<%= taskDivided[0].substr(1) %>' class="done">
+                    not done
+                </a>
+                <a style="margin-left: 10px;" href='/delete/:<%= taskDivided[0].substr(1) %>' class="done">
+                    delete
+                </a>
+            <% } %>
+        </div>
+    <% } %>
+</body>
+</html>

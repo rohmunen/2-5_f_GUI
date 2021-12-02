@@ -1,0 +1,20 @@
+<nav>
+    <ul>
+      <li><a href="/">GUI</a></li>
+      <li><a href="/connect">Login</a></li>
+      <% if (role === 'admin') {%>
+        <li><a href="/register">Create employee</a></li>
+        <li><a href="/createtask">Create task</a></li>
+        <li><a href="/client">Clients</a></li>
+        <li><a href="/report">Generate report</a></li>
+      <% }%>
+      <% if (role === 'manager') {%>
+        <li><a href="/createtask">Create task</a></li>
+        <li><a href="/client">Clients</a></li>
+      <% }%>
+      <% if (role !== undefined) {%>
+        <li><a href="/tasks">Tasks</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <% }%>
+    </ul>
+</nav>

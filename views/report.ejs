@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/nav.ejs") %>
+    <form action="report" method="POST">
+        <div class="container">
+          <label for="username"><b>Employee name</b></label>
+          <input type="text" placeholder="Enter Username" name="username" required>
+          <label for="position"><b>Start date</b></label>
+          <input type="text" placeholder="Enter Employee Position" name="start_date" required>
+          <label for="password"><b>End date</b></label>
+          <input type="text" placeholder="Enter Password" name="end_date" required>
+          <button type="submit">Generate</button>
+        </div>
+      </form>
+    <% if (report !== undefined) {%>
+      <% for (var i = 0; i < report.length; i++) {%>
+        <p><%= report[i].kind %>: <%= report[i].count %></p>
+      <%}%>
+    <%}%>
+    <%- include("./partials/err.ejs") %>
+</body>
+</html>
